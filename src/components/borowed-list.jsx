@@ -1,28 +1,26 @@
-import { useAtom } from "jotai";
 import { BookMarked, X } from "lucide-react";
-import React, { useState } from "react";
-import { borrowsAtom } from "../lib/atoms";
-import useAuth from "../hooks/use-auth";
+import { useState } from "react";
 
 export const BorrowedList = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [borrows, setBorrows] = useAtom(borrowsAtom);
-  const { data: authUserData } = useAuth();
+  const [borrows, setBorrows] = useState([
+    {
+      ID: 1,
+      Title: "The Catcher in the Rye",
+      Description:
+        "A story about a young man's struggles with growing up and finding his place in the world.",
+      Author: "J.D. Salinger",
+      Year: 1951,
+      ImageURI: "https://example.com/the-catcher-in-the-rye.jpg",
+      Borrows: 77,
+    },
+  ]);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const handleReturn = (bookId) => {
-    // sementara
-    setBorrows((prevBooks) =>
-      prevBooks.map((book) =>
-        book.ID === bookId ? { ...book, Borrows: null } : book
-      )
-    );
+    console.log("returning");
   };
-
-  const borrowedBooks = borrows.filter(
-    (book) => book.Borrows === authUserData?.user?.ID
-  );
 
   return (
     <>
@@ -59,8 +57,8 @@ export const BorrowedList = () => {
         <div className='p-4 overflow-y-auto h-full'>
           <h2 className='text-lg font-bold mb-4'>Your Borrowed Books</h2>
           <ul className='space-y-3'>
-            {borrowedBooks.length ? (
-              borrowedBooks.map((book) => (
+            {borrows.length ? (
+              borrows.map((book) => (
                 <li
                   key={book.ID}
                   className='p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors shadow-sm'

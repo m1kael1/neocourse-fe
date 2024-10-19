@@ -2,12 +2,9 @@ import { BookUser, Library, LogOutIcon } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BorrowedList } from "./borowed-list";
-import useAuth from "../hooks/use-auth";
 
 const Header = () => {
   const [inScroll, setInScroll] = useState(false);
-  const currentPath = useLocation().pathname;
-  const { data, signOut } = useAuth(currentPath);
   const location = useLocation();
 
   const handleScroll = () => {
@@ -30,7 +27,7 @@ const Header = () => {
         <div className='container mx-auto flex justify-between items-center py-5 max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-start space-x-4'>
             <span className='text-xl sm:text-2xl font-semibold text-gray-800'>
-              Welcome, <strong>{data?.user.Name}!</strong>
+              Welcome, <strong>User!</strong>
             </span>
           </div>
 
@@ -46,7 +43,6 @@ const Header = () => {
                 <span className='hidden md:inline'>Library</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to='/my-books'
@@ -60,17 +56,14 @@ const Header = () => {
                 <span className='hidden md:inline'>My Books</span>
               </Link>
             </li>
-
+            {/* optional */}
             <li>
               <BorrowedList />
             </li>
           </ul>
 
           {/* Logout Icon */}
-          <LogOutIcon
-            onClick={signOut}
-            className='cursor-pointer text-gray-700 hover:text-red-600 transition-colors duration-300'
-          />
+          <LogOutIcon className='cursor-pointer text-gray-700 hover:text-red-600 transition-colors duration-300' />
         </div>
       </nav>
     </>

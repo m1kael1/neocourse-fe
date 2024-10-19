@@ -6,7 +6,7 @@ const books = [
     Author: "Harper Lee",
     Year: 1960,
     ImageURI: "https://example.com/to-kill-a-mockingbird.jpg",
-    Borrows: 120,
+    Borrows: null,
   },
   {
     ID: 2,
@@ -24,7 +24,7 @@ const books = [
     Author: "F. Scott Fitzgerald",
     Year: 1925,
     ImageURI: "https://example.com/the-great-gatsby.jpg",
-    Borrows: 85,
+    Borrows: null,
   },
   {
     ID: 4,
@@ -78,7 +78,7 @@ const books = [
     Author: "J.R.R. Tolkien",
     Year: 1937,
     ImageURI: "https://example.com/the-hobbit.jpg",
-    Borrows: 150,
+    Borrows: null,
   },
   {
     ID: 10,
@@ -87,7 +87,7 @@ const books = [
     Author: "Fyodor Dostoevsky",
     Year: 1866,
     ImageURI: "https://example.com/crime-and-punishment.jpg",
-    Borrows: 58,
+    Borrows: null,
   },
 ];
 

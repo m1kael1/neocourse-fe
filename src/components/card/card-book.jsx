@@ -1,37 +1,14 @@
 import { useState } from "react";
-import { useBook } from "../../hooks/use-book";
 import { X } from "lucide-react";
-import { useAtom } from "jotai";
-import { borrowsAtom } from "../../lib/atoms";
-import useAuth from "../../hooks/use-auth";
 
 export const CardBook = ({ data }) => {
   const { ID, Title, Description, Author, Year, ImageURI, Borrows } = data;
-  const { borrowBookMutation } = useBook();
-  const { data: userAuthData } = useAuth();
-  const [, setBorrows] = useAtom(borrowsAtom);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const handleBorrow = () => {
-    // borrowBookMutation.mutate(ID, {
-    //   onSuccess: () => {
-    //     alert(`${Title} has been borrowed!`);
-    //   },
-    // });
-    setBorrows((prevBorrows) => [
-      ...prevBorrows,
-      {
-        ID,
-        Title,
-        Description,
-        Author,
-        Year,
-        ImageURI,
-        Borrows: userAuthData?.user?.ID,
-      },
-    ]);
+    console.log("borrowing");
   };
 
   return (
