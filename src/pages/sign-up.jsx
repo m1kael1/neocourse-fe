@@ -1,12 +1,5 @@
-import SignUpForm from "../components/form/sign-up-form";
-import WelcomeLayout from "../components/layout/welcome-layout";
-
 const SignUp = () => {
-  return (
-    <WelcomeLayout>
-      <SignUpForm />
-    </WelcomeLayout>
-  );
+  return <div>Sign Up Page</div>;
 };
 
 export default SignUp;
